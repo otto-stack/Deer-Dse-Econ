@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const ImagePlaceholder: React.FC<{ label: string; className?: string }> = ({ label, className }) => (
@@ -220,7 +219,7 @@ const Home: React.FC = () => {
                 {[
                    { val: "97%", label: "學生大考顯著進步" },
                    { val: "1st", label: "超過 30% 學生考獲全級第一" },
-                   { val: "24/7", label: "隨時隨地的語音支援" }
+                   { val: "24/7", label: "隨時隨地的whatsapp支援" }
                 ].map((stat, i) => (
                   <div key={i} className="flex items-center gap-5 md:gap-6 group">
                     <span className="font-jost text-[2.2rem] md:text-[3.5rem] font-thin text-deer-gold/90 group-hover:text-deer-gold transition-colors leading-none">{stat.val}</span>
