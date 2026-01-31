@@ -1,3 +1,15 @@
 
 # This file is here to ensure the public directory is tracked.
-# Place all your .jpg images (brand-logo.jpg, hero-desktop.jpg, etc.) in this folder.
+# Place all your images in this folder.
+# Current required assets:
+# - brand-logo.png (Header Logo)
+# - hero-desktop.jpg
+# - hero-mobile.jpg
+# - philosophy-handwriting.jpg
+# - profile-portrait.jpg
+# - profile-working.jpg
+# - course-regular.jpg
+# - course-intensive.jpg
+# - course-mock.jpg
+# - voice-bg.jpg
+# - voice-evidence.jpg
