@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({
       >
         <div className="overflow-hidden rounded-full h-[36px] md:h-[40px] w-auto">
           <img 
-            src="brand-logo.jpg" 
+            src="/brand-logo.jpg" 
             alt="DEER ECON Logo" 
             className="h-full w-auto mix-blend-multiply group-hover:scale-110 transition-transform duration-700"
             onError={(e) => (e.currentTarget.style.display = 'none')}

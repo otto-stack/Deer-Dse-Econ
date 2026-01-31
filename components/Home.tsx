@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const ImagePlaceholder: React.FC<{ label: string; className?: string }> = ({ label, className }) => (
@@ -28,13 +29,13 @@ const Home: React.FC = () => {
       <section className="relative h-[calc(100vh-80px)] md:h-[calc(100vh-90px)] w-full overflow-hidden flex items-center justify-center -mt-[80px] md:-mt-[90px]">
         <div className="absolute inset-0 z-0">
           <SafeImage 
-            src="hero-desktop.jpg" 
+            src="/hero-desktop.jpg" 
             alt="Atmosphere" 
             placeholderLabel="HERO DESKTOP" 
             className="hidden md:block w-full h-full object-cover animate-slowZoom"
           />
           <SafeImage 
-            src="hero-mobile.jpg" 
+            src="/hero-mobile.jpg" 
             alt="Atmosphere" 
             placeholderLabel="HERO MOBILE" 
             className="md:hidden w-full h-full object-cover animate-slowZoom"
@@ -68,7 +69,7 @@ const Home: React.FC = () => {
         <section className="px-[6%] md:px-[10%] py-16 md:py-24 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div className="edu-card fade-up">
             <SafeImage 
-              src="philosophy-handwriting.jpg" 
+              src="/philosophy-handwriting.jpg" 
               alt="Handwritten Notes" 
               placeholderLabel="NOTES DETAIL" 
               className="edu-img w-full shadow-sm"
@@ -142,13 +143,13 @@ const Home: React.FC = () => {
           </div>
           <div className="order-1 md:order-2 grid grid-cols-2 gap-4 edu-card fade-up">
             <SafeImage 
-              src="profile-portrait.jpg" 
+              src="/profile-portrait.jpg" 
               alt="Deer Portrait" 
               placeholderLabel="PORTRAIT" 
               className="edu-img w-full h-full object-cover shadow-sm"
             />
              <SafeImage 
-              src="profile-working.jpg" 
+              src="/profile-working.jpg" 
               alt="Deer Working" 
               placeholderLabel="PREPARATION" 
               className="edu-img w-full h-full object-cover mt-6 md:mt-8 shadow-sm"
@@ -166,9 +167,9 @@ const Home: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
             {[
-              { title: "常規系列", en: "Regular Series", tag: "Foundation", img: "course-regular.jpg", label: "01" },
-              { title: "精讀系列", en: "Intensive Series", tag: "Efficiency", img: "course-intensive.jpg", label: "02" },
-              { title: "實戰操卷系列", en: "Drilling Series", tag: "Strategy", img: "course-mock.jpg", label: "03" }
+              { title: "常規系列", en: "Regular Series", tag: "Foundation", img: "/course-regular.jpg", label: "01" },
+              { title: "精讀系列", en: "Intensive Series", tag: "Efficiency", img: "/course-intensive.jpg", label: "02" },
+              { title: "實戰操卷系列", en: "Drilling Series", tag: "Strategy", img: "/course-mock.jpg", label: "03" }
             ].map((course, idx) => (
               <div key={idx} className="edu-card group fade-up flex flex-col" style={{ transitionDelay: `${idx * 150}ms` }}>
                 <div className="aspect-[4/5] overflow-hidden mb-6 md:mb-8">
@@ -201,7 +202,7 @@ const Home: React.FC = () => {
         <section className="relative py-16 md:py-24 px-[6%] md:px-[10%] text-white overflow-hidden flex items-center min-h-[60vh] md:min-h-[70vh]">
           <div className="absolute inset-0 z-0 bg-deer-dark">
             <SafeImage 
-               src="voice-bg.jpg" 
+               src="/voice-bg.jpg" 
                alt="Background" 
                placeholderLabel="STORY BACKGROUND" 
                className="w-full h-full object-cover opacity-20"
@@ -230,7 +231,7 @@ const Home: React.FC = () => {
             </div>
             <div className="p-1 md:p-2 bg-white/5 border border-white/10 backdrop-blur-sm edu-card fade-up">
               <SafeImage 
-                src="voice-evidence.jpg" 
+                src="/voice-evidence.jpg" 
                 alt="Student Reviews" 
                 placeholderLabel="EVIDENCE" 
                 className="edu-img w-full opacity-80 shadow-inner"
