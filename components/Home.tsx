@@ -5,15 +5,36 @@ const ImagePlaceholder: React.FC<{ label: string; className?: string }> = ({ lab
   <div className={`flex justify-center items-center bg-deer-border text-deer-accent font-jost text-[0.75rem] tracking-widest text-center p-[20px] w-full min-h-[300px] ${className}`}>
     <div>
       {label}<br />
-      <span className="text-[0.6em] opacity-40 uppercase">(Media Asset Pending)</span>
+      <span className="text-[0.6em] opacity-40 uppercase">(Image Loading Failed)</span>
     </div>
   </div>
 );
 
-const SafeImage: React.FC<{ src: string; alt: string; className?: string; placeholderLabel: string }> = ({ src, alt, className, placeholderLabel }) => {
+interface SafeImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  placeholderLabel: string;
+}
+
+const SafeImage: React.FC<SafeImageProps> = ({ placeholderLabel, className, ...props }) => {
   const [error, setError] = React.useState(false);
+  
+  // Reset error state if the source changes
+  React.useEffect(() => {
+    setError(false);
+  }, [props.src]);
+
   if (error) return <ImagePlaceholder label={placeholderLabel} className={className} />;
-  return <img src={src} alt={alt} className={className} onError={() => setError(true)} />;
+  
+  return (
+    <img 
+      {...props} 
+      className={className} 
+      onError={(e) => {
+        console.warn(`Image failed to load: ${props.src}`);
+        setError(true);
+      }}
+      // Removed decoding="async" to maximize compatibility with older Android WebViews
+    />
+  );
 };
 
 const WhatsAppIcon = () => (
@@ -33,12 +54,14 @@ const Home: React.FC = () => {
             alt="Atmosphere" 
             placeholderLabel="HERO DESKTOP" 
             className="hidden md:block w-full h-full object-cover animate-slowZoom"
+            loading="eager" // Hero images should load immediately
           />
           <SafeImage 
             src="/hero-mobile.jpg" 
             alt="Atmosphere" 
             placeholderLabel="HERO MOBILE" 
             className="md:hidden w-full h-full object-cover animate-slowZoom"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-deer-dark/30"></div>
         </div>
@@ -73,6 +96,7 @@ const Home: React.FC = () => {
               alt="Handwritten Notes" 
               placeholderLabel="NOTES DETAIL" 
               className="edu-img w-full shadow-sm"
+              loading="lazy"
             />
           </div>
           <div className="text-deer-dark fade-up">
@@ -143,16 +167,18 @@ const Home: React.FC = () => {
           </div>
           <div className="order-1 md:order-2 grid grid-cols-2 gap-4 edu-card fade-up">
             <SafeImage 
-              src="/profile-portrait.jpg" 
+              src="/profile-portrait.jpg?v=1" 
               alt="Deer Portrait" 
               placeholderLabel="PORTRAIT" 
               className="edu-img w-full h-full object-cover shadow-sm"
+              loading="eager" // Changed to eager to ensure loading on mobile
             />
              <SafeImage 
-              src="/profile-working.jpg" 
+              src="/profile-working.jpg?v=1" 
               alt="Deer Working" 
               placeholderLabel="PREPARATION" 
               className="edu-img w-full h-full object-cover mt-6 md:mt-8 shadow-sm"
+              loading="eager" // Changed to eager to ensure loading on mobile
             />
           </div>
         </section>
@@ -178,6 +204,7 @@ const Home: React.FC = () => {
                     alt={course.title} 
                     placeholderLabel={`COLLECTION ${course.label}`} 
                     className="edu-img w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div className="border-l border-deer-gold/40 pl-5 flex-grow">
@@ -206,6 +233,7 @@ const Home: React.FC = () => {
                alt="Background" 
                placeholderLabel="STORY BACKGROUND" 
                className="w-full h-full object-cover opacity-20"
+               loading="lazy"
             />
           </div>
           <div className="relative z-10 w-full grid md:grid-cols-2 gap-12 md:gap-20 items-center">
@@ -235,6 +263,7 @@ const Home: React.FC = () => {
                 alt="Student Reviews" 
                 placeholderLabel="EVIDENCE" 
                 className="edu-img w-full opacity-80 shadow-inner"
+                loading="lazy"
               />
             </div>
           </div>
